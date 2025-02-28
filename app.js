@@ -38,6 +38,10 @@ app.use('/api/users', userRoutes);
 app.use(ErrorHandler);
 // Start the server
 const PORT = process.env.PORT || 5000;
+
+app.get('/', (req, res) => {
+    res.send('Welcome to the Express Server!');  // Send a welcome message on GET /
+  });
 app.listen(PORT, (req,res) => {
    
   console.log(`Server running on port ${PORT}`);
