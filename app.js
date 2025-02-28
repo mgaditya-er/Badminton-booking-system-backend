@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/userRoutes');
 const dotenv = require('dotenv');
+const { errorHandler } = require('./middleware/errorHandler');
 
 // Initialize environment variables
 dotenv.config();
@@ -20,6 +21,9 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 // Routes
 app.use('/api/users', userRoutes);
 
+
+// Global Error Handler
+// app.use(errorHandler);
 // Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
